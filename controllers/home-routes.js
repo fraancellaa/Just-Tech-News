@@ -31,9 +31,6 @@ router.get('/', (req, res) => {
     .then(dbPostData => {
       const posts = dbPostData.map(post => post.get({ plain: true }));
 
-<<<<<<< HEAD
-      res.render('homepage', { posts });
-=======
       res.render('homepage', {
         posts,
         loggedIn: req.session.loggedIn
@@ -85,7 +82,6 @@ router.get('/post/:id', (req, res) => {
         post,
         loggedIn: req.session.loggedIn
       });
->>>>>>> feature/single-post
     })
     .catch(err => {
       console.log(err);
@@ -98,10 +94,7 @@ router.get('/login', (req, res) => {
     res.redirect('/');
     return;
   }
-<<<<<<< HEAD
-=======
 
->>>>>>> feature/single-post
   res.render('login');
 });
 
