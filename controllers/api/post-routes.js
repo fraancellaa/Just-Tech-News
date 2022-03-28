@@ -77,6 +77,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
+<<<<<<< HEAD:controllers/api/post-routes.js
   Post.create({
     title: req.body.title,
     post_url: req.body.post_url,
@@ -87,16 +88,41 @@ router.post('/', (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
+=======
+  if (req.session) {
+    Post.create({
+      title: req.body.title,
+      post_url: req.body.post_url,
+      user_id: req.session.user_id
+    })
+      .then(dbPostData => res.json(dbPostData))
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  }
+>>>>>>> feature/single-post:routes/api/post-routes.js
 });
 
 router.put('/upvote', (req, res) => {
   // custom static method created in models/Post.js
+<<<<<<< HEAD:controllers/api/post-routes.js
   Post.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
     .then(updatedVoteData => res.json(updatedVoteData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
+=======
+  if (req.session) {
+    Post.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
+      .then(updatedVoteData => res.json(updatedVoteData))
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  }
+>>>>>>> feature/single-post:routes/api/post-routes.js
 });
 
 router.put('/:id', (req, res) => {

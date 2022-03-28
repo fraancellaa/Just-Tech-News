@@ -65,7 +65,11 @@ router.post('/', (req, res) => {
         req.session.user_id = dbUserData.id;
         req.session.username = dbUserData.username;
         req.session.loggedIn = true;
+<<<<<<< HEAD:controllers/api/user-routes.js
   
+=======
+
+>>>>>>> feature/single-post:routes/api/user-routes.js
         res.json(dbUserData);
       });
     })
@@ -98,7 +102,11 @@ router.post('/login', (req, res) => {
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
+<<<<<<< HEAD:controllers/api/user-routes.js
   
+=======
+
+>>>>>>> feature/single-post:routes/api/user-routes.js
       res.json({ user: dbUserData, message: 'You are now logged in!' });
     });
   });
@@ -109,8 +117,12 @@ router.post('/logout', (req, res) => {
     req.session.destroy(() => {
       res.status(204).end();
     });
+<<<<<<< HEAD:controllers/api/user-routes.js
   }
   else {
+=======
+  } else {
+>>>>>>> feature/single-post:routes/api/user-routes.js
     res.status(404).end();
   }
 });
